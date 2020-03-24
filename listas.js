@@ -16,11 +16,14 @@ Juan Lopez:
 
 `
 
-detectList = md => {
-    let newMd = md.replace(/^(.*\n)\s*\*(.+)\n[^\*]*/gm, '$1<ul>\n *$2\n ');
-    newMd = newMd.replace(/^\s*(\*.+)\n\s*\n/gm, ' $1\n</ul>\n\n');
-    newMd = newMd.replace(/^\s\*(.+)/gm, '<li>* $1</li>')
-    return newMd;
+const pipe = functions => data => {
+    return functions.reduce((value, func) => func(value), data);
 }
 
-console.log(detectList(exampleMD));
+const pipelineUL = pipe([
+    md => md.replace(/^(.*\n)\s*\*(.+)\n[^\*]*/gm, '$1<ul>\n *$2\n '),
+    md => md.replace(/^\s*(\*.+)\n\s*\n/gm, ' $1\n</ul>\n\n'),
+    md => md.replace(/^\s\*(.+)/gm, '<li>$1</li>'),
+]);
+
+console.log(pipelineUL(exampleMD));
