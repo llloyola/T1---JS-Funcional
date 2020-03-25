@@ -17,8 +17,8 @@ const pipe = functions => data => {
 }
 
 const pipelineCode = pipe([
-    md => md.replace(/'{3}.+\n([^']+)'{3}/gm, '<code style=display:block;white-space:pre-wrap>\n$1</code>'),
-    md => md.replace(/'([^\n']+)'/g, '<code>$1</code>'),
+    md => md.replace(/`{3}.+\n([^`]+)`{3}/gm, '<code style=display:block;white-space:pre-wrap>\n$1</code>'),
+    md => md.replace(/`([^\n`]+)`/g, '<code>$1</code>'),
 ]);
 
 console.log(pipelineCode(exampleMD));
