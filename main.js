@@ -146,4 +146,7 @@ const pipeline = pipe([
 exampleMD = pipelineTable(exampleMD);
 exampleMD = pipelineUL(exampleMD);
 exampleMD = pipelineCode(exampleMD);
+exampleMD = pipelineHorizontalRules(exampleMD);
+exampleMD = pipelineHeaders(exampleMD);
+exampleMD = pipelineImg(exampleMD);
 console.log(exampleMD);
