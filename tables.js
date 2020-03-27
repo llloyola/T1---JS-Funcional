@@ -24,15 +24,15 @@ const beginningPattern = /^\n\s?(.*\|.*)$/gm;
 
 const dashesPattern = /^[\s-:]*\|[\s-:\|]*\n/gm;
 
-const firstThPattern = /(?=\n<th>\n<tr>)/gm;
-const lastTdPattern = /(?<=<\/td>)(?!\n<td>)/g;
+const firstTrPattern = /(?=\n<tr>\n<th>)/gm;
+const lastTrPattern = /(?<=<\/tr>)(?!\n<tr>)/g;
 
-const prettifyHeader = type => header => `<${type}>\n`.concat(header.trim()
+const prettifyHeader = type => header => `<tr>\n`.concat(header.trim()
     .trim('|')
     .split('|')
     .filter(element => element)
-    .map(element => `<tr>${element.trim()}</tr>`)
-    .join('\n'), `\n</${type}>`);
+    .map(element => `<${type}>${element.trim()}</${type}>`)
+    .join('\n'), `\n</tr>`);
 
 const prettifyLine = pattern => fn => md => md.replace(pattern, x => fn(x));
 
@@ -48,8 +48,13 @@ const pipelineResult = pipe([
     prettifyLine(beginningPattern)(prettifyHeader('th')),
     prettifyLine(dashesPattern)(dashesDeleter),
     prettifyLine(wholeLinePattern)(prettifyHeader('td')),
-    prettifyLine(firstThPattern)(addTableTag),
-    prettifyLine(lastTdPattern)(addClosingTableTag),
+    prettifyLine(firstTrPattern)(addTableTag),
+    prettifyLine(lastTrPattern)(addClosingTableTag),
+    prettifyLine(/<table>/gm)(x => '<table style="border: 1px solid black;font-family: arial, sans-serif;border-collapse: collapse;width: 100%;">'),
+    prettifyLine(/<th>/gm)(x => '<th style="border: 1px solid #dddddd;text-align: left;padding: 8px;">'),
+    prettifyLine(/<td>/gm)(x => '<td style="border: 1px solid #dddddd;text-align: left;padding: 8px;">'),
+    prettifyLine(/<tr>/gm)(x => '<tr style="background-color: #dddddd">'),
 ])(exampleMD);
 
 console.log(pipelineResult);
+
