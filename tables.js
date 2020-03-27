@@ -58,5 +58,5 @@ const pipelineTable = pipe([
 
 console.log(pipelineTable(exampleMD));
 
-export default pipelineTable;
+module.exports = pipelineTable;
 

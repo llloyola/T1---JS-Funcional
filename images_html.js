@@ -13,4 +13,4 @@ const pipelineImg = pipe ([
 
 console.log(pipelineImg(md))
 
-export default pipelineImg;
+module.exports = pipelineImg;

@@ -28,4 +28,4 @@ const pipelineUL = pipe([
 
 console.log(pipelineUL(exampleMD));
 
-export default pipelineUL;
+module.exports = pipelineUL;

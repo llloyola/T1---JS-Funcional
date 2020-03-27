@@ -23,4 +23,4 @@ const pipelineCode = pipe([
 
 console.log(pipelineCode(exampleMD));
 
-module.exports = pipelineCode;
+export default pipelineCode;

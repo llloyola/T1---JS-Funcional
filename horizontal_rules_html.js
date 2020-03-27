@@ -49,7 +49,4 @@ const pipelineHR = pipe([
 console.log(pipelineHR(mdHR))
 console.log(pipelineHR(example))
 
-
-
-
-export default pipelineHR;
+module.exports = pipelineHR;
