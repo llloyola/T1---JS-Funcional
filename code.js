@@ -1,15 +1,15 @@
 exampleMD = `
-'''javascript
+\`\`\`javascript
 var s = "JavaScript syntax highlighting";
 alert(s);
-'''
+\`\`\`
  
-'''python
+\`\`\`python
 s = "Python syntax highlighting"
 print s
-'''
+\`\`\`
 
-'var foo = 0;'
+\`var foo = 0;\`
 `
 
 const pipe = functions => data => {
