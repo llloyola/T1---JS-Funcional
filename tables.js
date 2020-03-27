@@ -21,16 +21,11 @@ Markdown | Less | Pretty
 // Patrones regex
 const wholeLinePattern = /^(.*\| .+$)/gm;
 const beginningPattern = /^\n\s?(.*\|.*)$/gm;
-const endingPattern = /\|?(.+\|[^\|\n]+)+\|?\n\s/g;
 
 const dashesPattern = /^[\s-:]*\|[\s-:\|]*\n/gm;
 
-const firstTrPattern = /(?<!<\/tr>\n)<tr>.+/g;
-const lastTrPattern = /^(<tr>.+<\/tr>)(?=\n(?!<tr>))/gm;
-
-const replaceMiddleLine = md => md.replace(wholeLinePattern, '');
-const replaceBeginningLine = md => md.replace(beginningPattern, '');
-const replaceEndingLine = md => md.replace(endingPattern, '');
+const firstThPattern = /(?=\n<th>\n<tr>)/gm;
+const lastTdPattern = /(?<=<\/td>)(?!\n<td>)/g;
 
 const prettifyHeader = type => header => `<${type}>\n`.concat(header.trim()
     .trim('|')
@@ -39,15 +34,22 @@ const prettifyHeader = type => header => `<${type}>\n`.concat(header.trim()
     .map(element => `<tr>${element.trim()}</tr>`)
     .join('\n'), `\n</${type}>`);
 
-const replaceLine = pattern => newLine => line => line.replace(pattern, newLine);
-
 const prettifyLine = pattern => fn => md => md.replace(pattern, x => fn(x));
 
 const dashesDeleter = x => '';
+const addTableTag = x => `\n<table>${x}`;
+const addClosingTableTag = x => `${x}\n</table>`;
 
-exampleMD = prettifyLine(beginningPattern)(prettifyHeader('th'))(exampleMD);
-console.log(exampleMD);
-exampleMD = prettifyLine(dashesPattern)(dashesDeleter)(exampleMD);
-console.log(exampleMD);
-exampleMD = prettifyLine(wholeLinePattern)(prettifyHeader('td'))(exampleMD);
-console.log(exampleMD);
+const pipe = functions => data => {
+    return functions.reduce((value, func) => func(value), data);
+}
+
+const pipelineResult = pipe([
+    prettifyLine(beginningPattern)(prettifyHeader('th')),
+    prettifyLine(dashesPattern)(dashesDeleter),
+    prettifyLine(wholeLinePattern)(prettifyHeader('td')),
+    prettifyLine(firstThPattern)(addTableTag),
+    prettifyLine(lastTdPattern)(addClosingTableTag),
+])(exampleMD);
+
+console.log(pipelineResult);
