@@ -56,3 +56,5 @@ const pipelineHD = pipe([
 
 console.log(pipelineHD(md))
 console.log(pipelineHD(example))
+
+export default pipelineHD;
