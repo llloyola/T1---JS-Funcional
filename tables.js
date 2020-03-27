@@ -44,7 +44,7 @@ const pipe = functions => data => {
     return functions.reduce((value, func) => func(value), data);
 }
 
-const pipelineResult = pipe([
+const pipelineTable = pipe([
     prettifyLine(beginningPattern)(prettifyHeader('th')),
     prettifyLine(dashesPattern)(dashesDeleter),
     prettifyLine(wholeLinePattern)(prettifyHeader('td')),
@@ -54,7 +54,9 @@ const pipelineResult = pipe([
     prettifyLine(/<th>/gm)(x => '<th style="border: 1px solid #dddddd;text-align: left;padding: 8px;">'),
     prettifyLine(/<td>/gm)(x => '<td style="border: 1px solid #dddddd;text-align: left;padding: 8px;">'),
     prettifyLine(/<tr>/gm)(x => '<tr style="background-color: #dddddd">'),
-])(exampleMD);
+]);
 
-console.log(pipelineResult);
+console.log(pipelineTable(exampleMD));
+
+export default pipelineTable;
 

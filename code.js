@@ -22,3 +22,5 @@ const pipelineCode = pipe([
 ]);
 
 console.log(pipelineCode(exampleMD));
+
+export default pipelineCode;
