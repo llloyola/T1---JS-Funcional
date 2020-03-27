@@ -54,7 +54,7 @@ const pipelineHD = pipe([
 ]);
 
 
-console.log(pipelineHD(md))
-console.log(pipelineHD(example))
+//console.log(pipelineHD(md))
+//console.log(pipelineHD(example))
 
 module.exports = pipelineHD;

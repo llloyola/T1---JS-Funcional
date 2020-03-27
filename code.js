@@ -21,6 +21,6 @@ const pipelineCode = pipe([
     md => md.replace(/`([^\n`]+)`/g, '<code>$1</code>'),
 ]);
 
-console.log(pipelineCode(exampleMD));
+//console.log(pipelineCode(exampleMD));
 
 module.exports = pipelineCode;

@@ -26,6 +26,6 @@ const pipelineUL = pipe([
     md => md.replace(/^\s\*(.+)/gm, '<li>$1</li>'),
 ]);
 
-console.log(pipelineUL(exampleMD));
+//console.log(pipelineUL(exampleMD));
 
 module.exports = pipelineUL;

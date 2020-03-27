@@ -11,6 +11,6 @@ const pipelineImg = pipe ([
     url => url.replace(/\!\[([^\]]+)\]\(([^\)]+)\)/g, '<img src="$2" alt="$1" />'),
 ]);
 
-console.log(pipelineImg(md))
+//console.log(pipelineImg(md))
 
 module.exports = pipelineImg;

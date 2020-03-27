@@ -46,7 +46,7 @@ const pipelineHR = pipe([
     text => text.replace(/\_{2}.+/g, '<hr />'),
 ]);
 
-console.log(pipelineHR(mdHR))
-console.log(pipelineHR(example))
+//console.log(pipelineHR(mdHR))
+//console.log(pipelineHR(example))
 
 module.exports = pipelineHR;

@@ -56,7 +56,7 @@ const pipelineTable = pipe([
     prettifyLine(/<tr>/gm)(x => '<tr style="background-color: #dddddd">'),
 ]);
 
-console.log(pipelineTable(exampleMD));
+//console.log(pipelineTable(exampleMD));
 
 module.exports = pipelineTable;
 

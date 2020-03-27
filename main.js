@@ -111,6 +111,19 @@ Underscores
 
 `
 
-const composer = f1 => f2 => f3 => f4 => f5 => md => f1(f2(f3(f4(f5(md)))));
+const composer = f1 => f2 => f3 => f4 => f5 => f6 => md => f1(f2(f3(f4(f6(md)))));
 
-console.log(composer(pipelineCode)(pipelineUL)(pipelineTable)(pipelineHeaders)(pipelineImg)(pipelineHorizontalRules)(exampleMD));
+const pipe = functions => data => {
+    return functions.reduce((value, func) => func(value), data);
+}
+
+const pipeline = pipe([
+    pipelineTable,
+    pipelineUL,
+    pipelineCode, 
+    pipelineHeaders,
+    pipelineImg,
+    pipelineHorizontalRules,
+]);
+
+console.log(pipeline(exampleMD));
