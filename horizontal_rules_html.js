@@ -41,7 +41,7 @@ const pipe = functions => data => {
 
 
 const pipelineHR = pipe([
-    text => text.replace(/\*{2}.+/g, '<hr />'),
+    text => text.replace(/\*{3}/g, '<hr />'),
     text => text.replace(/\-{2}.+/g, '<hr />'),
     text => text.replace(/\_{2}.+/g, '<hr />'),
 ]);

@@ -21,9 +21,9 @@ const pipe = functions => data => {
 }
 
 const pipelineUL = pipe([
-    md => md.replace(/^(.*\n)\s*\*(.+)\n[^\*]*/gm, '$1<ul>\n *$2\n '),
-    md => md.replace(/^\s*(\*.+)\n\s*\n/gm, ' $1\n</ul>\n\n'),
-    md => md.replace(/^\s\*(.+)/gm, '<li>$1</li>'),
+    md => md.replace(/(?<=\n|\n\s)\*([^\*\n]+)$/gm, '<li>$1</li>'),
+    md => md.replace(/(?<!<\/li>\n)\s(<li>)/gm, '<ul>\n $1'),
+    md => md.replace(/(<\/li>)(?!\n\s<li>)/gm, '$1\n</ul>'),
 ]);
 
 //console.log(pipelineUL(exampleMD));

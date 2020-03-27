@@ -5,7 +5,7 @@ const pipelineHeaders = require('./headers_html.js');
 const pipelineImg = require('./images_html.js');
 const pipelineHorizontalRules = require('./horizontal_rules_html.js');
 
-exampleMD = `
+let exampleMD = `
 # H1
 ## H2
 ### H3
@@ -35,6 +35,21 @@ Strikethrough uses two tildes. ~~Scratch this.~~
 1. Actual numbers don't matter, just that it's a number
 ⋅⋅1. Ordered sub-list
 4. And another item.
+
+Luis Loyola:
+ * Listas
+ * Code and Syntax Highlightning (sin colores)
+ * Tablas
+ 
+Julian Lires:
+ * Emphasis
+ * Links
+ * Blockquotes
+ 
+Juan Lopez:
+ * Headers
+ * Imágenes
+ * Horizontal Rules
 
 ⋅⋅⋅You can have properly indented paragraphs within list items. Notice the blank line above, and the leading spaces (at least one, but we'll use three here to also align the raw Markdown).
 
@@ -126,4 +141,9 @@ const pipeline = pipe([
     pipelineHorizontalRules,
 ]);
 
-console.log(pipeline(exampleMD));
+//console.log(pipeline(exampleMD));
+
+exampleMD = pipelineTable(exampleMD);
+exampleMD = pipelineUL(exampleMD);
+exampleMD = pipelineCode(exampleMD);
+console.log(exampleMD);

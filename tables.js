@@ -20,7 +20,7 @@ Markdown | Less | Pretty
 
 // Patrones regex
 const wholeLinePattern = /^(.*\| .+$)/gm;
-const beginningPattern = /^\n\s?(.*\|.*)$/gm;
+const beginningPattern = /^(?<=\n\s)(.*\|.*)$/gm;
 
 const dashesPattern = /^[\s-:]*\|[\s-:\|]*\n/gm;
 
