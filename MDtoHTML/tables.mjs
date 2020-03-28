@@ -1,4 +1,7 @@
-let exampleMD = `
+import {pipe} from "./pipeline.mjs";
+
+
+let md = `
 Colons can be used to align columns.
 
 | Tables        | Are           | Cool  |
@@ -8,7 +11,7 @@ Colons can be used to align columns.
 | zebra stripes | are neat      |    $1 |
 
 There must be at least 3 dashes separating each header cell.
-The outer pipes (|) are optional, and you don't need to make the 
+The outer pipes (|) are optional, and you don't need to make the
 raw Markdown line up prettily. You can also use inline Markdown.
 
 Markdown | Less | Pretty
@@ -40,11 +43,8 @@ const dashesDeleter = x => '';
 const addTableTag = x => `\n<table>${x}`;
 const addClosingTableTag = x => `${x}\n</table>`;
 
-const pipe = functions => data => {
-    return functions.reduce((value, func) => func(value), data);
-}
 
-const pipelineTable = pipe([
+export const tableMDtoHTML = pipe([
     prettifyLine(beginningPattern)(prettifyHeader('th')),
     prettifyLine(dashesPattern)(dashesDeleter),
     prettifyLine(wholeLinePattern)(prettifyHeader('td')),
@@ -56,7 +56,4 @@ const pipelineTable = pipe([
     prettifyLine(/<tr>/gm)(x => '<tr style="background-color: #dddddd">'),
 ]);
 
-//console.log(pipelineTable(exampleMD));
-
-module.exports = pipelineTable;
-
+//console.log(tableMDtoHTML(md));
