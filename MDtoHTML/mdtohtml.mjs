@@ -6,7 +6,7 @@ import {linkMDtoHTML} from "./link.mjs";
 import {listMDtoHTML} from "./listas.mjs";
 import {tableMDtoHTML} from "./tables.mjs";
 import { hrMDtoHTML } from "./horizontal_rules.mjs";
-import {hdMDtoHTML} from "./header.mjs";
+import {hdMDtoHTML, hdMDtoTXT} from "./header.mjs";
 import { cdMDtoHTML } from "./code.mjs";
 
 export const MDtoHTML = pipe([
