@@ -8,9 +8,9 @@ $(document).ready(function() {
     let reader = new FileReader();
     reader.onload = function(){
           let text = reader.result;
+          $("#html-text").append(MDtoHTML(text));
           text = text.replace(/\n/g, "<br />");
           $("#markdown-text").append(text);
-          $("#html-text").append(MDtoHTML(text));
           //var node = document.getElementById('output');
           //node.innerText = text;
         };
