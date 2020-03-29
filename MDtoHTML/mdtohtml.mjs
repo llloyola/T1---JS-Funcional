@@ -13,11 +13,12 @@ export const MDtoHTML = pipe([
     text => tableMDtoHTML(text),
     text => hdMDtoHTML(text),
     text => hrMDtoHTML(text),
+    text => listMDtoHTML(text),
     text => cdMDtoHTML(text),
     text => emphasisMDtoHTML(text),
     text => imgMDtoHTML(text),
     text => linkMDtoHTML(text),
     text => blockquoteMDtoHTML(text),
-    text => listMDtoHTML(text),
+  
     
 ]);
