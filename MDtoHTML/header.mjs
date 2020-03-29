@@ -8,3 +8,7 @@ export const hdMDtoHTML = pipe([
     text => text.replace(/\#{2}(.+)/g, '<h2>$1</h2>'),
     text => text.replace(/\#{1}(.+)/g, '<h1>$1</h1>'),
 ]);
+
+export const hdMDtoTXT = pipe([
+    text => text.replace(/#/g, ''),
+])
