@@ -13,5 +13,12 @@ export const hdMDtoHTML = pipe([
 ]);
 
 export const hdMDtoTXT = pipe([
-    text => text.replace(/#/g, ''),
+    text => text.replace(/\#{6} (.+)/g, '$1'),
+    text => text.replace(/\#{5} (.+)/g, '$1'),
+    text => text.replace(/\#{4} (.+)/g, '$1'),
+    text => text.replace(/\#{3} (.+)/g, '$1'),
+    text => text.replace(/\#{2} (.+)/g, '$1\n'),
+    text => text.replace(/\#{1} (.+)/g, '$1\n\n'),
+    text => text.replace(/^(.+)\n\={2,}/gm, '$1\n\n'),
+    text => text.replace(/^(.+)\n\-{2,}/gm, '$1\n'),
 ])
