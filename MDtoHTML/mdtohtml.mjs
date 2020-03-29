@@ -9,6 +9,7 @@ import { hrMDtoHTML } from "./horizontal_rules.mjs";
 import {hdMDtoHTML, hdMDtoTXT} from "./header.mjs";
 import { cdMDtoHTML } from "./code.mjs";
 
+
 export const MDtoHTML = pipe([
     text => tableMDtoHTML(text),
     text => hdMDtoHTML(text),
@@ -19,6 +20,11 @@ export const MDtoHTML = pipe([
     text => imgMDtoHTML(text),
     text => linkMDtoHTML(text),
     text => blockquoteMDtoHTML(text),
-  
-    
+
+
 ]);
+
+export const generateHTMLFile = (text, name) => {
+  let f = new Blob([text], {type:"text/plain;charset=utf-8"});
+  saveAs(f, name + ".html");
+}
