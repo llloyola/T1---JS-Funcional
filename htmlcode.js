@@ -15,7 +15,7 @@ $(document).ready(function() {
           html_text = MDtoHTML(text);
           normal_text = MDtoTXT(text);
           $("#html-text").append(html_text);
-          $("#txt-text").append(normal_text);
+          $("#txt-text").append(normal_text.replace(/\n/g, "<br />"));
           text = text.replace(/\n/g, "<br />");
           $("#markdown-text").append(text);
           //var node = document.getElementById('output');

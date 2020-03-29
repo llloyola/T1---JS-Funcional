@@ -40,8 +40,8 @@ const prettifyHeader = type => header => `<tr>\n`.concat(header.trim()
 const prettifyLine = pattern => fn => md => md.replace(pattern, x => fn(x));
 
 const dashesDeleter = x => '';
-const addTableTag = x => `\n<table>${x}`;
-const addClosingTableTag = x => `${x}\n</table>`;
+const addTableTag = x => `<br /><table>${x}`;
+const addClosingTableTag = x => `${x}\n</table><br />`;
 
 
 export const tableMDtoHTML = pipe([
@@ -50,7 +50,7 @@ export const tableMDtoHTML = pipe([
     prettifyLine(wholeLinePattern)(prettifyHeader('td')),
     prettifyLine(firstTrPattern)(addTableTag),
     prettifyLine(lastTrPattern)(addClosingTableTag),
-    prettifyLine(/<table>/gm)(x => '<table style="border: 1px solid black;font-family: arial, sans-serif;border-collapse: collapse;width: 100%;">'),
+    prettifyLine(/<table>/gm)(x => '<br /><table style="border: 1px solid black;font-family: arial, sans-serif;border-collapse: collapse;width: 100%;">'),
     prettifyLine(/<th>/gm)(x => '<th style="border: 1px solid #dddddd;text-align: left;padding: 8px;">'),
     prettifyLine(/<td>/gm)(x => '<td style="border: 1px solid #dddddd;text-align: left;padding: 8px;">'),
     prettifyLine(/<tr>/gm)(x => '<tr style="background-color: #dddddd">'),
