@@ -18,4 +18,12 @@ const striketroughMDtoHTML = text => text.replace(/[\~]{2}([^\~]+)[\~]{2}/g, '<d
 export const emphasisMDtoHTML = compose(boldMDtoHTML, italicMDtoHTML, striketroughMDtoHTML);
 
 
+const boldMDtoTXT = text => text.replace(/[\*\_]{2}([^\*\_]+)[\*\_]{2}/g, '$1');
+const italicMDtoTXT = text => text.replace(/[\*\_]{1}([^\*\_]+)[\*\_]{1}/g, '$1');
+const striketroughMDtoTXT = text => text.replace(/[\~]{2}([^\~]+)[\~]{2}/g, '$1');
+
+
+export const emphasisMDtoTXT = compose(boldMDtoTXT, italicMDtoTXT, striketroughMDtoTXT);
+
+
 //console.log(emphasisMDtoHTML(md))
