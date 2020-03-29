@@ -28,4 +28,4 @@ export const listMDtoHTML = pipe([
     md => md.replace(/(<\/li>)(?!\n\s<li>|\n<\/ul>)/gm, '$1\n</ol>'),
 ]);
 
-console.log(listMDtoHTML(md));
+//console.log(listMDtoHTML(md));
