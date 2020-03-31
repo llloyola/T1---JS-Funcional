@@ -1,4 +1,4 @@
-import {MDtoHTML, MDtoTXT, generateFile} from "./MDtoHTML/mdtohtml.mjs"
+import {MDtoHTML, MDtoTXT, generateFile} from "./MdConverterModules/mdtohtml.mjs"
 
 
 $(document).ready(function() {
