@@ -1,6 +1,6 @@
 # JS Funcional
 
 Integrantes:
-    * Luis Loyola
-    * Julian Lires
-    * Juan Lopez
+1. Luis Loyola
+2. Julian Lires
+3. Juan Lopez
